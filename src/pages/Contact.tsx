@@ -4,7 +4,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaCheckCircle } from 'react-icons/fa';
-import { toast } from 'sonner';
+// import { toast } from 'sonner';
+import { ToastContainer, toast } from "react-toastify";
+
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -21,15 +23,9 @@ const contactInfo = [
   {
     icon: <FaPhone className="w-6 h-6" />,
     title: 'Phone',
-    details: '+1 (555) 123-4567',
-    link: 'tel:+15551234567',
-  },
-  {
-    icon: <FaMapMarkerAlt className="w-6 h-6" />,
-    title: 'Office',
-    details: '123 Tech Street, Digital City, DC 12345',
-    link: 'https://maps.google.com',
-  },
+    details: '252:613692550',
+    link: 'tel:252:613692550',
+  }
 ];
 
 export default function Contact() {
@@ -43,22 +39,34 @@ export default function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+const handleSubmit = async (e) => {
+  e.preventDefault(); // Stop page refresh/redirect
 
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
-      setFormData({ name: '', email: '', phone: '', company: '', message: '' });
-      
-      setTimeout(() => {
-        setIsSuccess(false);
-      }, 3000);
-    }, 1500);
-  };
+  try {
+    const response = await fetch("https://formspree.io/f/mrboywgy", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      toast.success("Thanks! Your message has been sent!.");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
+      });
+    } else {
+      alert("❌ Error sending message. Please try again later.");
+    }
+  } catch (err) {
+    console.error(err);
+    alert("❌ Server error. Please try again later.");
+  }
+};
+
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -263,14 +271,6 @@ export default function Contact() {
                 variants={fadeInUp}
                 transition={{ delay: 0.6 }}
               >
-                <div className="bg-gradient-primary rounded-xl overflow-hidden shadow-medium h-64">
-                  <div className="w-full h-full flex items-center justify-center text-primary-foreground">
-                    <div className="text-center">
-                      <FaMapMarkerAlt className="text-6xl mb-4 mx-auto opacity-50" />
-                      <p className="text-lg">Interactive Map</p>
-                    </div>
-                  </div>
-                </div>
               </motion.div>
             </motion.div>
           </div>
@@ -287,20 +287,32 @@ export default function Contact() {
             variants={fadeInUp}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-3xl font-bold mb-6">Office Hours</h2>
+            <h2 className="text-3xl font-bold mb-6">working Hours</h2>
             <div className="grid md:grid-cols-2 gap-6">
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border">
                 <h3 className="font-semibold mb-2">Weekdays</h3>
-                <p className="text-muted-foreground">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p className="text-muted-foreground">sturday - wendesday: 12:00 AM - 9:00 PM</p>
               </div>
               <div className="bg-card rounded-xl p-6 shadow-soft border border-border">
                 <h3 className="font-semibold mb-2">Weekend</h3>
-                <p className="text-muted-foreground">Saturday - Sunday: Closed</p>
+                <p className="text-muted-foreground">thursday - friday: Closed</p>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
+        <ToastContainer
+        position="top-center"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </div>
   );
 }

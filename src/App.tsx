@@ -12,10 +12,11 @@ import Pricing from "./pages/Pricing";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
+import { ToastContainer, toast } from "react-toastify";
 
 const queryClient = new QueryClient();
 
-const App = () => (
+const App = () => <>
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
@@ -39,6 +40,7 @@ const App = () => (
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
-);
+  <ToastContainer/>
+</>
 
 export default App;

@@ -8,9 +8,9 @@ const fadeInUp = {
 };
 
 const stats = [
-  { icon: <FaRocket />, value: '100+', label: 'Projects Completed' },
+  { icon: <FaRocket />, value: '20+', label: 'Projects Completed' },
   { icon: <FaUsers />, value: '50+', label: 'Happy Clients' },
-  { icon: <FaTrophy />, value: '5+', label: 'Years Experience' },
+  { icon: <FaTrophy />, value: '2+', label: 'Years Experience' },
   { icon: <FaHeart />, value: '99%', label: 'Client Satisfaction' },
 ];
 

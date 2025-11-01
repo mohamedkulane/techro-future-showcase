@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { FaPills, FaCreditCard, FaGraduationCap, FaPalette, FaCheck } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const fadeIn = {
   hidden: { opacity: 0 },
@@ -29,7 +30,6 @@ const systems = [
       'Expiry date monitoring and batch tracking',
       'Customer database and purchase history',
       'Advanced reporting and analytics dashboard',
-      'Integration with insurance providers',
       'Multi-location support',
     ],
     color: 'from-blue-500 to-cyan-500',
@@ -75,22 +75,21 @@ const systems = [
   },
   {
     id: 'branding',
-    title: 'Branding & Software Services',
+    title: 'Modern websites & Small market systemes',
     icon: <FaPalette className="w-8 h-8" />,
     description:
-      'Custom software development and complete branding solutions tailored to your unique business needs.',
+      'Custom software development and complete market  solutions tailored to your unique business needs.',
     features: [
       'Custom software development from scratch',
-      'Professional logo and brand identity design',
+      'Responsive Design',
       'Responsive web and mobile application development',
       'Modern UI/UX design and prototyping',
-      'Complete marketing materials suite',
-      'Brand strategy and consultation',
-      'Social media assets and campaigns',
+      'Smart Content Systems ',
+      'Performance Optimization',
       'Ongoing support and maintenance',
     ],
     color: 'from-orange-500 to-red-500',
-    videoPlaceholder: 'Branding Services Showcase',
+    videoPlaceholder: 'Modern Services Showcase',
   },
 ];
 
@@ -259,12 +258,9 @@ export default function Demo() {
                       </div>
 
                       <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                        <Button variant="hero" size="lg" className="flex-1">
+                       <Link to="/contact"> <Button variant="hero" size="lg" className="flex-1 ml-[1rem] px-64">
                           Request Demo
-                        </Button>
-                        <Button variant="outline" size="lg" className="flex-1">
-                          Download Brochure
-                        </Button>
+                        </Button></Link>
                       </div>
                     </motion.div>
 
@@ -280,13 +276,13 @@ export default function Demo() {
                       <p className="text-primary-foreground/90 mb-6">
                         Schedule a personalized demo with our team to explore all features
                       </p>
-                      <Button
+                     <Link to="/contact"> <Button
                         variant="hero"
                         size="xl"
                         className="bg-background text-primary hover:bg-background/90"
                       >
                         Book Consultation
-                      </Button>
+                      </Button></Link>
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>

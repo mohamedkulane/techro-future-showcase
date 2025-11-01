@@ -12,10 +12,10 @@ const fadeInUp = {
 const plans = [
   {
     name: 'Basic',
-    price: { monthly: 99, yearly: 990 },
+    price: { monthly: 25, yearly: 250 },
     description: 'Perfect for small businesses getting started',
     features: [
-      'Up to 10 users',
+      'Up to 2 users',
       'Basic support',
       'Core features',
       'Mobile app access',
@@ -29,10 +29,10 @@ const plans = [
   },
   {
     name: 'Professional',
-    price: { monthly: 249, yearly: 2490 },
+    price: { monthly: 40, yearly: 400 },
     description: 'Ideal for growing businesses',
     features: [
-      'Up to 50 users',
+      'Up to 5 users',
       'Priority support',
       'All core features',
       'Advanced analytics',
@@ -66,7 +66,7 @@ const plans = [
 ];
 
 const compareFeatures = [
-  { name: 'Number of Users', basic: '10', pro: '50', enterprise: 'Unlimited' },
+  { name: 'Number of Users', basic: '2', pro: '5', enterprise: 'Unlimited' },
   { name: 'Storage', basic: '10 GB', pro: '100 GB', enterprise: 'Unlimited' },
   { name: 'Support', basic: 'Email', pro: 'Priority', enterprise: '24/7 Dedicated' },
   { name: 'API Access', basic: false, pro: true, enterprise: true },

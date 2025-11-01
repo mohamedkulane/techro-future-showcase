@@ -27,8 +27,8 @@ const systems = [
   },
   {
     icon: <FaRocket className="w-8 h-8" />,
-    title: 'Branding & Software',
-    description: 'Custom software development and complete branding solutions.',
+    title: 'Modern websites',
+    description: 'Custom website development and complete your business  solution.',
   },
 ];
 

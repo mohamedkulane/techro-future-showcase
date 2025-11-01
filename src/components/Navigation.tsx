@@ -45,7 +45,7 @@ export const Navigation = () => {
             <div className="w-10 h-10 bg-gradient-primary rounded-lg flex items-center justify-center shadow-md group-hover:shadow-glow transition-all duration-300">
               <span className="text-primary-foreground font-bold text-xl">T</span>
             </div>
-            <span className="text-xl md:text-2xl font-bold gradient-text">TechRo</span>
+            <span className="text-xl md:text-2xl font-bold gradient-text">TechRo<span className='text-black'>Solutions</span></span>
           </Link>
 
           {/* Desktop Navigation */}

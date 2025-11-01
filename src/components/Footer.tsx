@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
+import { FaFacebookF, FaLinkedinIn, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 
 export const Footer = () => {
   return (
@@ -23,26 +23,10 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-primary-foreground">Quick Links</h3>
             <ul className="space-y-2">
-              <li>
-                <Link to="/" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link to="/services" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link to="/pricing" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">
-                  Pricing
-                </Link>
-              </li>
-              <li>
-                <Link to="/about" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">
-                  About
-                </Link>
-              </li>
+              <li><Link to="/" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">Home</Link></li>
+              <li><Link to="/services" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">Services</Link></li>
+              <li><Link to="/pricing" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">Pricing</Link></li>
+              <li><Link to="/about" className="text-sm text-secondary-foreground/80 hover:text-primary transition-colors">About</Link></li>
             </ul>
           </div>
 
@@ -53,7 +37,7 @@ export const Footer = () => {
               <li className="text-sm text-secondary-foreground/80">Pharmacy Management</li>
               <li className="text-sm text-secondary-foreground/80">Transaction & Payment</li>
               <li className="text-sm text-secondary-foreground/80">School Management</li>
-              <li className="text-sm text-secondary-foreground/80">Branding Services</li>
+              <li className="text-sm text-secondary-foreground/80">Mordern webistes & Small market systemes</li>
             </ul>
           </div>
 
@@ -61,6 +45,7 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold mb-4 text-primary-foreground">Connect With Us</h3>
             <div className="flex space-x-3 mb-4">
+              {/* Facebook */}
               <a
                 href="#"
                 className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -68,13 +53,19 @@ export const Footer = () => {
               >
                 <FaFacebookF />
               </a>
+
+              {/* WhatsApp (replaces Twitter) */}
               <a
-                href="#"
-                className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
-                aria-label="Twitter"
+                href="https://wa.me/252613692550"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:text-white transition-all duration-300"
+                aria-label="WhatsApp"
               >
-                <FaTwitter />
+                <FaWhatsapp />
               </a>
+
+              {/* LinkedIn */}
               <a
                 href="#"
                 className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -82,6 +73,8 @@ export const Footer = () => {
               >
                 <FaLinkedinIn />
               </a>
+
+              {/* Instagram */}
               <a
                 href="#"
                 className="w-10 h-10 bg-secondary-foreground/10 rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -90,11 +83,12 @@ export const Footer = () => {
                 <FaInstagram />
               </a>
             </div>
-            <Link to="/contact">
+
+            <a href="https://wa.me/252613692550" target='_blank'>
               <button className="text-sm text-primary hover:underline">
                 Contact Us →
               </button>
-            </Link>
+            </a>
           </div>
         </div>
 
