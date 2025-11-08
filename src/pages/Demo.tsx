@@ -20,7 +20,7 @@ const systems = [
   {
     id: 'pharmacy',
     title: 'Pharmacy Management System',
-    icon: <FaPills className="w-8 h-8" />,
+    icon: <FaPills className="w-6 h-6 sm:w-8 sm:h-8" />,
     description:
       'A comprehensive pharmacy management solution that streamlines operations, from inventory tracking to prescription management.',
     features: [
@@ -38,7 +38,7 @@ const systems = [
   {
     id: 'transaction',
     title: 'Transaction & Payment System',
-    icon: <FaCreditCard className="w-8 h-8" />,
+    icon: <FaCreditCard className="w-6 h-6 sm:w-8 sm:h-8" />,
     description:
       'Secure, fast, and reliable payment processing platform built for modern businesses.',
     features: [
@@ -57,7 +57,7 @@ const systems = [
   {
     id: 'school',
     title: 'School Management System',
-    icon: <FaGraduationCap className="w-8 h-8" />,
+    icon: <FaGraduationCap className="w-6 h-6 sm:w-8 sm:h-8" />,
     description:
       'All-in-one educational platform designed to simplify school administration and enhance learning.',
     features: [
@@ -75,16 +75,16 @@ const systems = [
   },
   {
     id: 'branding',
-    title: 'Modern websites & Small market systemes',
-    icon: <FaPalette className="w-8 h-8" />,
+    title: 'Modern websites & Small market systems',
+    icon: <FaPalette className="w-6 h-6 sm:w-8 sm:h-8" />,
     description:
-      'Custom software development and complete market  solutions tailored to your unique business needs.',
+      'Custom software development and complete market solutions tailored to your unique business needs.',
     features: [
       'Custom software development from scratch',
       'Responsive Design',
       'Responsive web and mobile application development',
       'Modern UI/UX design and prototyping',
-      'Smart Content Systems ',
+      'Smart Content Systems',
       'Performance Optimization',
       'Ongoing support and maintenance',
     ],
@@ -98,22 +98,22 @@ export default function Demo() {
   const activeSystem = systems.find((s) => s.id === activeTab) || systems[0];
 
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen pt-16 md:pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-hero relative overflow-hidden">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-hero relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary-foreground via-transparent to-transparent" />
         </div>
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="text-5xl md:text-6xl font-bold text-primary-foreground mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-4 sm:mb-6">
               Interactive System Demo
             </h1>
-            <p className="text-xl text-primary-foreground/90">
+            <p className="text-base sm:text-lg md:text-xl text-primary-foreground/90 px-2 sm:px-0">
               Explore our powerful systems and see how they can transform your business
             </p>
           </motion.div>
@@ -121,12 +121,27 @@ export default function Demo() {
       </section>
 
       {/* Demo Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-background">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid lg:grid-cols-5 gap-8">
+            {/* Mobile Tab Selector */}
+            <div className="lg:hidden mb-6">
+              <select
+                value={activeTab}
+                onChange={(e) => setActiveTab(e.target.value)}
+                className="w-full p-3 rounded-lg bg-card border border-border focus:outline-none focus:ring-2 focus:ring-primary"
+              >
+                {systems.map((system) => (
+                  <option key={system.id} value={system.id}>
+                    {system.title}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="grid lg:grid-cols-5 gap-6 md:gap-8">
               {/* Left Sidebar - Tabs */}
-              <div className="lg:col-span-2">
+              <div className="lg:col-span-2 hidden lg:block">
                 <div className="space-y-3 sticky top-24">
                   {systems.map((system) => (
                     <motion.button
@@ -134,13 +149,13 @@ export default function Demo() {
                       onClick={() => setActiveTab(system.id)}
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
-                      className={`w-full text-left p-6 rounded-xl transition-all duration-300 ${
+                      className={`w-full text-left p-4 md:p-6 rounded-xl transition-all duration-300 ${
                         activeTab === system.id
                           ? 'bg-gradient-primary text-primary-foreground shadow-glow'
                           : 'bg-card hover:bg-muted border border-border shadow-soft'
                       }`}
                     >
-                      <div className="flex items-center space-x-4">
+                      <div className="flex items-center space-x-3 md:space-x-4">
                         <div
                           className={`flex-shrink-0 ${
                             activeTab === system.id ? 'text-primary-foreground' : 'text-primary'
@@ -150,7 +165,7 @@ export default function Demo() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <h3
-                            className={`font-semibold mb-1 ${
+                            className={`font-semibold mb-1 text-sm md:text-base ${
                               activeTab === system.id ? 'text-primary-foreground' : ''
                             }`}
                           >
@@ -161,7 +176,7 @@ export default function Demo() {
                               initial={{ opacity: 0, height: 0 }}
                               animate={{ opacity: 1, height: 'auto' }}
                               exit={{ opacity: 0, height: 0 }}
-                              className={`text-sm ${
+                              className={`text-xs md:text-sm ${
                                 activeTab === system.id
                                   ? 'text-primary-foreground/80'
                                   : 'text-muted-foreground'
@@ -194,15 +209,15 @@ export default function Demo() {
                     exit="exit"
                     variants={fadeIn}
                     transition={{ duration: 0.3 }}
-                    className="space-y-8"
+                    className="space-y-6 md:space-y-8"
                   >
                     {/* Video/Demo Preview */}
                     <motion.div
                       variants={slideIn}
                       transition={{ delay: 0.1 }}
-                      className={`bg-gradient-to-br ${activeSystem.color} rounded-2xl overflow-hidden shadow-strong`}
+                      className={`bg-gradient-to-br ${activeSystem.color} rounded-xl md:rounded-2xl overflow-hidden shadow-strong`}
                     >
-                      <div className="aspect-video flex items-center justify-center p-12">
+                      <div className="aspect-video flex items-center justify-center p-6 sm:p-8 md:p-12">
                         <div className="text-center text-white">
                           <motion.div
                             animate={{
@@ -214,14 +229,14 @@ export default function Demo() {
                               repeat: Infinity,
                               ease: 'easeInOut',
                             }}
-                            className="text-6xl mb-6"
+                            className="text-4xl sm:text-5xl md:text-6xl mb-4 sm:mb-6"
                           >
                             {activeSystem.icon}
                           </motion.div>
-                          <h3 className="text-2xl font-bold mb-2">
+                          <h3 className="text-lg sm:text-xl md:text-2xl font-bold mb-2">
                             {activeSystem.videoPlaceholder}
                           </h3>
-                          <p className="text-white/80">
+                          <p className="text-white/80 text-sm sm:text-base">
                             Interactive demo coming soon
                           </p>
                         </div>
@@ -232,35 +247,41 @@ export default function Demo() {
                     <motion.div
                       variants={slideIn}
                       transition={{ delay: 0.2 }}
-                      className="bg-card rounded-2xl p-8 shadow-medium border border-border"
+                      className="bg-card rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 shadow-medium border border-border"
                     >
-                      <h2 className="text-3xl font-bold mb-4">{activeSystem.title}</h2>
-                      <p className="text-lg text-muted-foreground mb-8">
+                      <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4">
+                        {activeSystem.title}
+                      </h2>
+                      <p className="text-sm sm:text-base md:text-lg text-muted-foreground mb-6 sm:mb-8">
                         {activeSystem.description}
                       </p>
 
-                      <h3 className="text-xl font-semibold mb-4">Key Features</h3>
-                      <div className="grid md:grid-cols-2 gap-4">
+                      <h3 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">
+                        Key Features
+                      </h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         {activeSystem.features.map((feature, index) => (
                           <motion.div
                             key={index}
                             initial={{ opacity: 0, x: -10 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: index * 0.05 + 0.3 }}
-                            className="flex items-start space-x-3"
+                            className="flex items-start space-x-2 sm:space-x-3"
                           >
-                            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                               <FaCheck className="text-primary text-xs" />
                             </div>
-                            <span className="text-sm">{feature}</span>
+                            <span className="text-xs sm:text-sm flex-1">{feature}</span>
                           </motion.div>
                         ))}
                       </div>
 
-                      <div className="mt-8 flex flex-col sm:flex-row gap-4">
-                       <Link to="/contact"> <Button variant="hero" size="lg" className="flex-1 ml-[1rem] px-64">
-                          Request Demo
-                        </Button></Link>
+                      <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4">
+                        <Link to="/contact" className="flex-1">
+                          <Button variant="hero" size="lg" className="w-full text-sm sm:text-base">
+                            Request Demo
+                          </Button>
+                        </Link>
                       </div>
                     </motion.div>
 
@@ -268,21 +289,23 @@ export default function Demo() {
                     <motion.div
                       variants={slideIn}
                       transition={{ delay: 0.3 }}
-                      className="bg-gradient-hero rounded-2xl p-8 text-center shadow-strong"
+                      className="bg-gradient-hero rounded-xl md:rounded-2xl p-4 sm:p-6 md:p-8 text-center shadow-strong"
                     >
-                      <h3 className="text-2xl font-bold text-primary-foreground mb-4">
+                      <h3 className="text-xl sm:text-2xl font-bold text-primary-foreground mb-3 sm:mb-4">
                         Want to See {activeSystem.title} in Action?
                       </h3>
-                      <p className="text-primary-foreground/90 mb-6">
+                      <p className="text-primary-foreground/90 mb-4 sm:mb-6 text-sm sm:text-base">
                         Schedule a personalized demo with our team to explore all features
                       </p>
-                     <Link to="/contact"> <Button
-                        variant="hero"
-                        size="xl"
-                        className="bg-background text-primary hover:bg-background/90"
-                      >
-                        Book Consultation
-                      </Button></Link>
+                      <Link to="/contact">
+                        <Button
+                          variant="hero"
+                          size="xl"
+                          className="bg-background text-primary hover:bg-background/90 text-sm sm:text-base"
+                        >
+                          Book Consultation
+                        </Button>
+                      </Link>
                     </motion.div>
                   </motion.div>
                 </AnimatePresence>
@@ -293,29 +316,31 @@ export default function Demo() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4">
+      <section className="py-12 sm:py-16 md:py-20 bg-gradient-subtle">
+        <div className="container mx-auto px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: '-50px' }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-xl text-muted-foreground mb-8">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6">
+              Ready to Get Started?
+            </h2>
+            <p className="text-base sm:text-lg md:text-xl text-muted-foreground mb-6 sm:mb-8 px-2 sm:px-0">
               Transform your business operations with our intelligent systems
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact">
-                <Button variant="cta" size="xl">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button variant="cta" size="xl" className="w-full sm:w-auto text-sm sm:text-base">
                   Contact Sales
                 </Button>
-              </a>
-              <a href="/pricing">
-                <Button variant="outline" size="xl">
+              </Link>
+              <Link to="/pricing" className="w-full sm:w-auto">
+                <Button variant="outline" size="xl" className="w-full sm:w-auto text-sm sm:text-base">
                   View Pricing
                 </Button>
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>
